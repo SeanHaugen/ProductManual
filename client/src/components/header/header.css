@@ -1,0 +1,60 @@
+
+
+.hero-body {
+    height: 30em;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    left: -8rem;
+    
+}
+
+.header-image {
+    position: fixed;
+    max-height: 29em;
+    transition: opacity 0.5s;
+    z-index: -2;
+    color: rgb(249, 204, 11);
+    
+}
+
+
+.navbar-menu {
+    position: fixed;
+    left: 10px;
+}
+
+.icon {
+    position: fixed;
+    right: 2em;
+    color: rgb(249, 204, 11);
+    
+}
+
+span button {
+    background: transparent;
+    border: 1px solid rgb(249, 204, 11);
+    border-radius: 50%;
+    
+    height: 8em;
+    width: 8em;
+    cursor: pointer;
+    
+}
+
+.home {
+    color: rgb(249, 204, 11)
+    
+}
+
+
+
+  .header-scrolled .header-image {
+    opacity: 0;
+    z-index: 0;
+  }
+
+
+hr .break {
+    z-index: 50;
+}

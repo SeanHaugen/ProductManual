@@ -1,0 +1,39 @@
+
+.section3 {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    height: 30em;
+}
+
+.section3 h1 {
+    
+    margin: 5em;
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    background: purple;
+    z-index: 15;
+    color: white;
+    opacity: 0;
+    /* transform: translateX(-300%);
+    animation: slide-in 3s forwards; */
+}
+
+/* @keyframes slide-in {
+    0% {
+      opacity: 0;
+      transform: translateX(-300%);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  } */
+
+  /* .section3 .h1-appear {
+    animation-delay: 1s; /* Delay the animation to start after scrolling over the <div> 
+  } */
