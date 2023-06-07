@@ -21,10 +21,10 @@ function FrontPage() {
                 <p className="title">title</p>
                 <p className="subtitle">Subtitle</p>
               </article>
-              {/* <article className="  tile is-child notification is-warning">
+              <article className="  tile is-child notification is-warning">
                 <p className="title">...tiles</p>
                 <p className="subtitle">Bottom tile</p>
-              </article> */}
+              </article> 
             </div>
             {/* <div className="tile is-parent ">
               <article className="tile is-child notification is-info">
@@ -44,17 +44,6 @@ function FrontPage() {
             </article>
           </div> */}
       </div>
-      <div className="tile is-parent">
-      <article className="tile is-child notification is-success">
-        <div className="content">
-          <p className="title">Tall tile</p>
-          <p className="subtitle">With even more content</p>
-          <div className="content">
-            Content
-          </div>
-        </div>
-      </article>
-    </div>
     </div>
     </>
     )

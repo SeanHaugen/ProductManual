@@ -13,6 +13,7 @@ import CategoryPage from './components/categoryPage/CategoryPage';
 import SubCategoryPage from './components/categoryPage/SubCategoryPage/SubCategoryPage';
 import FrontPage from './components/home/FrontPage';
 import ItemPage from './components/ItemPage/ItemPage';
+import SideBar from './components/SideBar/sideBar';
 
 
 
@@ -40,6 +41,7 @@ function App() {
         <header>
           <Header setSelectedRoute={setSelectedRoute} setCategory={setCategory} setSubCategory={setSubCategory}  />
         </header>
+        <SideBar />
         {/* <img className='background-image' src={background_image} alt="gradient background" /> */}
         <Routes>
           <Route path="/:category/:subCategory" element={<SubCategoryPage subCategory={subCategory} setItem={setItem} />} />
