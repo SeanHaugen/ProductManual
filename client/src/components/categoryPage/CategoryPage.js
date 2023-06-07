@@ -50,7 +50,7 @@ function CategoryPage({ category }) {
             <>
             {/* <h2>{product.category}</h2> */}
             <div key={index} className='product-list-items'>
-              <NavLink   className='column is-mobile product box' >
+              <NavLink to={`${product}`}  className='column is-mobile product box' >
                 <img src="https://fakeimg.pl/150x175" alt="placeholder"></img>
                 <br />
                {product.subcategory} 

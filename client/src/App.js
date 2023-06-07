@@ -32,6 +32,9 @@ function App() {
   console.log(category);
   console.log(subCategory);
   console.log(item);
+
+  const [pin, setPin] = useState([]);
+  console.log(pin);
   
   return (
     <div className="app">
@@ -41,12 +44,12 @@ function App() {
         <header>
           <Header setSelectedRoute={setSelectedRoute} setCategory={setCategory} setSubCategory={setSubCategory}  />
         </header>
-        <SideBar />
+        <SideBar pin={pin} />
         {/* <img className='background-image' src={background_image} alt="gradient background" /> */}
         <Routes>
           <Route path="/:category/:subCategory" element={<SubCategoryPage subCategory={subCategory} setItem={setItem} />} />
           <Route path="/:category" element={<CategoryPage category={category}  />} />
-          <Route path='/:category/:subCategory/:item' element={<ItemPage item={item} />} />
+          <Route path='/:category/:subCategory/:item' element={<ItemPage item={item} setPin={setPin} />} />
           <Route path='' element={<FrontPage />} />
           
         </Routes>

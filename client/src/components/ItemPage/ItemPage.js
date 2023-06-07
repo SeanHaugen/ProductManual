@@ -6,7 +6,7 @@ import ItemInfoTab2 from "./ItamPageTabs/Tab2";
 import ItemInfoTab3 from "./ItamPageTabs/Tab3";
 import ItemPricingTable from './PricingTable/ItemPricingTable';
 
-function ItemPage({subCategory, item}) {
+function ItemPage({setPin, item}) {
     
     console.log(item);
 
@@ -34,7 +34,9 @@ function ItemPage({subCategory, item}) {
 
     console.log(products);
 
-    
+    const handlePin = () => {
+      setPin((prevPin) => [...prevPin, item]);
+    };
   
     return (
       <>
@@ -65,12 +67,16 @@ function ItemPage({subCategory, item}) {
                
               
             </div>
+            
+                      <ItemInfoTab1 />
+                      <ItemInfoTab2 />
+                      <ItemInfoTab3 />
+            <button onClick={handlePin}>Save</button>
             </>
           ))}
-          <ItemInfoTab1 />
-          <ItemInfoTab2 />
-          <ItemInfoTab3 />
 
+          
+          
         </div>
       </div>
       <br className='break'/>

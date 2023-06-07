@@ -8,8 +8,6 @@
 
 
 .app {
-    background: linear-gradient(203deg,rgba(140, 98, 225, 0.867) 8.4%,rgba(38, 238, 201, 0.126) 30.67%, rgba(190, 247, 251, 0.333) 70.04%,hsla(270, 11%, 93%, 0.938) 100%);
-    /* background-attachment: fixed; */
     height: 300vh;
 }
 
@@ -23,25 +21,3 @@ hr {
 }
 
 
-main {
-    position: relative;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    /* max-height: 200vh;
-    overflow: hidden; */
-  }
-  
-
-  
-.background-image {
-    width:200%;
-    max-height: fit-content;
-    position: absolute;
-    z-index: -1;
-    background: transparent;
-}
-  
-  
-  
-  

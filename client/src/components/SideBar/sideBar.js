@@ -19,7 +19,7 @@ function SideBar ({pin, subCategory, category}) {
                 <div className="content">
                     <h1 className="title">Saved Items</h1>
                     <hr />
-                        {pin && pin.map((item, index) => (
+                        {pin.map((item, index) => (
                             <>
                             <div className="links" >
                                 <NavLink to={`/${category}/${subCategory}/${item}`} className="subtitle" key={index}>{item}</NavLink>
