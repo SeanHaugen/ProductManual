@@ -40,7 +40,7 @@ function ItemPage({setPin, item}) {
   
     return (
       <>
-      
+      <div className="item-page">
         <section className='filters'>
           <h2></h2>
           <div className='filter box'>
@@ -80,6 +80,7 @@ function ItemPage({setPin, item}) {
         </div>
       </div>
       <br className='break'/>
+      </div>
       </>
     );
 }

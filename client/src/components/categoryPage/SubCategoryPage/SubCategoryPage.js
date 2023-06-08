@@ -34,15 +34,7 @@ function SubCategoryPage({subCategory, setItem}) {
   
     return (
       <>
-      
-        <section className='filters'>
-          <h2></h2>
-          <div className='filter box'>
-            <ul>
-              <li>useful filter section</li>
-            </ul>
-          </div>
-        </section>
+
       <div className='pagination'>        
         <div className='product-list'>
           {products.map((product) => (

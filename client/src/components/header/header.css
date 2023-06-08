@@ -3,7 +3,7 @@
 }
 
 .hero-body {
-    height: 30em;
+    height: 26em;
     display: flex;
     justify-content: center;
     position: relative;
@@ -14,9 +14,9 @@
 
 .header-image {
     position: fixed;
-    max-height: 29em;
+    max-height: 24em;
     transition: opacity 0.5s;
-    z-index: 0;
+    z-index: -1;
     color: rgb(249, 204, 11);
     
 }

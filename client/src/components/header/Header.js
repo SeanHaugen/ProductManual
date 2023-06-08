@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react"
 import Menu from "./Menu"
+import SideBar from "../SideBar/sideBar";
 
 import SearchBar from "./SearchBar"
 import './header.css';
@@ -10,7 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
 
 
-function Header({setSelectedRoute, setCategory, setSubCategory}) {
+function Header({setSelectedRoute, setCategory, setSubCategory, pin}) {
 
     const element = <FontAwesomeIcon icon={faHome} />
 
@@ -51,11 +52,14 @@ function Header({setSelectedRoute, setCategory, setSubCategory}) {
                                 <SearchBar className="search-bar navbar-item"/>
                             </div>     
                         </nav>
+                        
                 </div>
 
-                
+                <SideBar pin={pin} />      
         </section>
+        
         </header>
+        
         <div className="breadcrumb" aria-label="breadcrumbs"></div>
         <br className="break" />
     </>

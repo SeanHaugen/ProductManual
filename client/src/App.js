@@ -42,13 +42,14 @@ function App() {
     <main>
       <Router history={history}>
         <header>
-          <Header setSelectedRoute={setSelectedRoute} setCategory={setCategory} setSubCategory={setSubCategory}  />
+          <Header setSelectedRoute={setSelectedRoute} setCategory={setCategory} setSubCategory={setSubCategory} pin={pin}  />
+          
         </header>
-        <SideBar pin={pin} />
+        
         {/* <img className='background-image' src={background_image} alt="gradient background" /> */}
         <Routes>
           <Route path="/:category/:subCategory" element={<SubCategoryPage subCategory={subCategory} setItem={setItem} />} />
-          <Route path="/:category" element={<CategoryPage category={category}  />} />
+          <Route path="/:category" element={<CategoryPage category={category} subCategory={subCategory} item={item} setSubCategory={setSubCategory}/>} />
           <Route path='/:category/:subCategory/:item' element={<ItemPage item={item} setPin={setPin} />} />
           <Route path='' element={<FrontPage />} />
           

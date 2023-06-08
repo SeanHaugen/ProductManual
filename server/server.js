@@ -68,7 +68,7 @@ app.get('/products/categorySelect', async (req, res) => {
 
     const result = await pool.query(categoryQuery, values);
     const products = result.rows;
-    
+
     res.send(products);
   } catch (err) {
     console.error(err);
