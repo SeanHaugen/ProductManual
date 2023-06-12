@@ -52,12 +52,6 @@ span button {
 
 
 
-  .header-scrolled .header-image {
-    opacity: 0;
-    z-index: 0;
-  }
-
-
 hr .break {
     z-index: 50;
 }

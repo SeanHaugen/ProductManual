@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react"
-import Menu from "./Menu"
+import Menu from "../Menu/Menu"
 import SideBar from "../SideBar/sideBar";
 
-import SearchBar from "./SearchBar"
+import SearchBar from "../searchbar/SearchBar"
 import './header.css';
 import logo from '../../data/img/logo1.png'
 import { NavLink} from 'react-router-dom';
@@ -48,14 +48,14 @@ function Header({setSelectedRoute, setCategory, setSubCategory, pin}) {
                         <nav className="navbar navbar-end" role="navigation" aria-label="main navigation"  >
                             <div className="navbar-menu navigation">
                                 <NavLink to='/' className="home" onClick={() => setSelectedRoute('/')}>{element}</NavLink> 
-                                <Menu className="navbar-menu" setSelectedRoute={setSelectedRoute} setCategory={setCategory} setSubCategory={setSubCategory} />   
+                                {/* <Menu className="navbar-menu" setSelectedRoute={setSelectedRoute} setCategory={setCategory} setSubCategory={setSubCategory} />    */}
                                 <SearchBar className="search-bar navbar-item"/>
                             </div>     
                         </nav>
                         
                 </div>
 
-                <SideBar pin={pin} />      
+                <SideBar pin={pin} setSelectedRoute={setSelectedRoute} setCategory={setCategory} setSubCategory={setSubCategory} />      
         </section>
         
         </header>

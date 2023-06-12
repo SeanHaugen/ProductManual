@@ -23,6 +23,11 @@ function ItemPricingTable({item}) {
       fetchProducts();
     }, []);
 
+    const handlePrice = (price) => {
+      return (price * 0.6).toFixed(2);
+    }
+
+
 
     return (
         <>
@@ -50,46 +55,47 @@ function ItemPricingTable({item}) {
                   </tr>
                   <tr>
                     <th scope='row'>net</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{handlePrice(product.prc1) }</td>
+                    <td>{handlePrice(product.prc2)}</td>
+                    <td>{handlePrice(product.prc3)}</td>
+                    <td>{handlePrice(product.prc4)}</td>
+                    <td>{handlePrice(product.prc5)}</td>
                   </tr>
                   <tr>
                     <th scope='row'>1st column Shift</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{handlePrice(product.prc2)}</td>
+                    <td>{handlePrice(product.prc3)}</td>
+                    <td>{handlePrice(product.prc4)}</td>
+                    <td>{handlePrice(product.prc5)}</td>
+                    <td>{handlePrice(product.prc6)}</td>
                   </tr>
                   <tr>
                     <th scope='row'>2nd column Shift</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{handlePrice(product.prc3)}</td>
+                    <td>{handlePrice(product.prc4)}</td>
+                    <td>{handlePrice(product.prc5)}</td>
+                    <td>{handlePrice(product.prc6)}</td>
+                    <td>{handlePrice(product.prc7)}</td>
                     {/* <td>{product.prc4}</td> */}
                   </tr>
                   <tr>
                     <th scope='row'>3rd column Shift</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    {/* <td>{product.prc5}</td> */}
+                    <td>{handlePrice(product.prc4)}</td>
+                    <td>{handlePrice(product.prc5)}</td>
+                    <td>{handlePrice(product.prc6)}</td>
+                    <td>{handlePrice(product.prc7)}</td>
+                    <td>{handlePrice(product.prc8)}</td>
+                    
                   </tr>
                   <tr>
                     <th scope='row'>4th column Shift</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    {/* <td>{product.prc6}</td> */}
+                    <td>{handlePrice(product.prc5)}</td>
+                    <td>{handlePrice(product.prc6)}</td>
+                    <td>{handlePrice(product.prc7)}</td>
+                    <td>{handlePrice(product.prc8)}</td>
+                    <td>{handlePrice(product.prc9)}</td>
+                    
+                  
                   </tr>
                 </tbody>
 

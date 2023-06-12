@@ -5,6 +5,8 @@ import ItemInfoTab1 from "./ItamPageTabs/Tab1";
 import ItemInfoTab2 from "./ItamPageTabs/Tab2";
 import ItemInfoTab3 from "./ItamPageTabs/Tab3";
 import ItemPricingTable from './PricingTable/ItemPricingTable';
+import SelfPromo from "./selfPromo/SelfPromo";
+import ColorBox from "./colorGrid/ColorBox";
 
 function ItemPage({setPin, item}) {
     
@@ -71,7 +73,9 @@ function ItemPage({setPin, item}) {
                       <ItemInfoTab1 />
                       <ItemInfoTab2 />
                       <ItemInfoTab3 />
-            <button onClick={handlePin}>Save</button>
+            <button onClick={handlePin}>Save to Favs</button>
+            <SelfPromo product={product} />
+            <ColorBox product={product} />
             </>
           ))}
 

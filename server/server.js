@@ -1,9 +1,9 @@
 const express = require('express');
-
 const app = express();
 const cors = require('cors');
 const { Pool } = require('pg');
 const bodyParser = require('body-parser');
+
 
 const PORT = process.env.PORT || 4000;
 
@@ -21,54 +21,41 @@ app.use(logger);
 
 
 
-
-app.get('/', (req, res) => {
-  const productCategory = req.params.category;
-  // console.log(productCategory);
-
+app.get('/', async (req, res) => {
+  try {
   let query = 'SELECT DISTINCT category FROM product_info ORDER BY category';
-
-
-  pool.query(query, (err, result) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send('Internal Server Error');
-    } else {
-      const productCategories = result.rows.map((row) => row.category);
-      res.send(productCategories);
-    }
-  });
+  let result = await pool.query(query)
+  const productCategories = result.rows.map((row) => row.category);
+  res.send(productCategories);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal Server Error!");
+  }
+  
 });
 
 
-app.get('/:category',(req, res) => {
+app.get('/:category', async (req, res) => {
+  try {
   const productCategory = req.params.category;
-  // console.log(productCategory);
-
   let query = `SELECT DISTINCT subcategory FROM product_info WHERE category = $1 ORDER BY subcategory`;
   let values = [productCategory];
-
-  pool.query(query,values, (err, result) => {
-    if (err) {
+  let result = await pool.query(query,values)
+  const productSubCategories = result.rows.map((row) => row.subcategory);
+  res.send(productSubCategories);
+   } catch(err) {
       console.error(err);
-      res.status(500).send('Internal Server Error');
-    } else {
-      const productSubCategories = result.rows.map((row) => row.subcategory);
-      res.send(productSubCategories);
-    }
-  });
+      res.status(500).send('Internal Server Error!');
+    };
 });
 
 app.get('/products/categorySelect', async (req, res) => {
   const productCategory = req.query.category;
-
   try {
     const categoryQuery = 'SELECT DISTINCT subcategory FROM product_info WHERE category = $1';
     const values = [productCategory];
-
     const result = await pool.query(categoryQuery, values);
     const products = result.rows;
-
     res.send(products);
   } catch (err) {
     console.error(err);
@@ -78,14 +65,11 @@ app.get('/products/categorySelect', async (req, res) => {
 
 app.get('/products/itemSelect', async (req, res) => {
   const productCategory = req.query.category;
-
   try {
-    const categoryQuery = 'SELECT * FROM product_info WHERE subcategory = $1';
+    const categoryQuery = 'SELECT * FROM product_info WHERE subcategory = $1 ORDER BY name';
     const values = [productCategory];
-
     const result = await pool.query(categoryQuery, values);
     const products = result.rows;
-    
     res.send(products);
   } catch (err) {
     console.error(err);
@@ -95,14 +79,11 @@ app.get('/products/itemSelect', async (req, res) => {
 
 app.get('/category/subcategory/', async (req, res) => {
   const itemNumber = req.query.item_number;
-
   try {
     const categoryQuery = 'SELECT * FROM product_info WHERE item_number = $1';
     const values = [itemNumber];
-
     const result = await pool.query(categoryQuery, values);
-    const products = result.rows;
-    
+    const products = result.rows;   
     res.send(products);
   } catch (err) {
     console.error(err);
@@ -110,20 +91,10 @@ app.get('/category/subcategory/', async (req, res) => {
   }
 });
 
-
-
-
-
 function logger (req, res, next) {
   console.log(req.originalUrl);
   next();
 }
-
-
-
-
-
-
 
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);
