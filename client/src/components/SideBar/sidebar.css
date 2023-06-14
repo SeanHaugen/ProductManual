@@ -7,8 +7,6 @@
 }
 
 .sidebar ul {
-  padding: 0;
-  margin: 0;
   color: rgb(249, 204, 11);
 }
 
@@ -19,7 +17,7 @@
 
 .sidebar li:hover {
   color: #b6b6b6;
-  background-color: #333;
+  /* background-color: #333; */
 }
 
 .searchbar {
