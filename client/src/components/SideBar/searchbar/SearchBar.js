@@ -11,7 +11,7 @@ function SearchBar() {
 
 
     const [searchData, setSearchData] = useState('');
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
 
     const handleClick = (e) => { 
         e.preventDefault();

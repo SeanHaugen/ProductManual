@@ -1,13 +1,18 @@
 import React, {useState, useEffect} from "react"
 import axios from "axios";
 import './sidebar.css';
-import Menu from "../Menu/Menu";
+import Menu from "./Menu/Menu";
+import SearchBar from "./searchbar/SearchBar";
+import SavedItems from "./savedItems/SavedItems";
 
-// import Bookmark from 'react-bookmark';
-import { NavLink } from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHome } from '@fortawesome/free-solid-svg-icons'
+
+
 
 function SideBar ({pin, setCategory, setSelectedRoute, setSubCategory}) {
-
+    const element = <FontAwesomeIcon icon={faHome} />
 
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -17,17 +22,20 @@ function SideBar ({pin, setCategory, setSelectedRoute, setSubCategory}) {
   
     return (
       <div className="sidebar">
-        <button onClick={handleSidebarClick}>
-          <i className="fa fa-bars"></i>
-        </button>
-        <Menu className="navbar-menu" setSelectedRoute={setSelectedRoute} setCategory={setCategory} setSubCategory={setSubCategory} /> 
-        <ul>
-          {pin.map((item, index) => (
-            <li key={item.id}>
-              <NavLink to={`category/subcategory/${item}`} className="subtitle" key={index}>{item}</NavLink>
-            </li>
-          ))}
-        </ul>
+        <nav className="navbar navbar-end" role="navigation" aria-label="main navigation"  >
+          <div className="navbar-menu navigation">
+              <NavLink to='/' className="home" onClick={() => setSelectedRoute('/')}>{element}</NavLink> 
+                                {/* <Menu className="navbar-menu" setSelectedRoute={setSelectedRoute} setCategory={setCategory} setSubCategory={setSubCategory} />    */}
+                                
+          </div>     
+        </nav>
+        <div className="searchbar-container">
+          <SearchBar className="searchbar" />
+          <Menu className="navbar-menu" setSelectedRoute={setSelectedRoute} setCategory={setCategory} setSubCategory={setSubCategory} /> 
+          
+          
+        </div>
+        <SavedItems pin={pin} className="saved-items" />
       </div>
     );
     // return (

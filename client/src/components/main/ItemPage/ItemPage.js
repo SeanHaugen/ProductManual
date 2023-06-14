@@ -1,12 +1,10 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
-
-import ItemInfoTab1 from "./ItamPageTabs/Tab1";
-import ItemInfoTab2 from "./ItamPageTabs/Tab2";
-import ItemInfoTab3 from "./ItamPageTabs/Tab3";
 import ItemPricingTable from './PricingTable/ItemPricingTable';
 import SelfPromo from "./selfPromo/SelfPromo";
 import ColorBox from "./colorGrid/ColorBox";
+import './itemPg.css';
+import RelatedItems from "./relatedItems/RelatedItems";
 
 function ItemPage({setPin, item}) {
     
@@ -43,14 +41,6 @@ function ItemPage({setPin, item}) {
     return (
       <>
       <div className="item-page">
-        <section className='filters'>
-          <h2></h2>
-          <div className='filter box'>
-            <ul>
-              <li>useful filter section</li>
-            </ul>
-          </div>
-        </section>
       <div className='box content'>        
         <div className='product-list'>
           {products.map((product) => (
@@ -69,13 +59,10 @@ function ItemPage({setPin, item}) {
                
               
             </div>
-            
-                      <ItemInfoTab1 />
-                      <ItemInfoTab2 />
-                      <ItemInfoTab3 />
             <button onClick={handlePin}>Save to Favs</button>
             <SelfPromo product={product} />
             <ColorBox product={product} />
+            <RelatedItems item={item} />
             </>
           ))}
 

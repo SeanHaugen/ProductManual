@@ -35,7 +35,7 @@ function SubCategoryPage({subCategory, setItem}) {
     return (
       <>
 
-      <div className='pagination'>        
+      <div className='sub-cat-page'>        
         <div className='product-list'>
           {products.map((product) => (
             <>

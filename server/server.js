@@ -77,6 +77,20 @@ app.get('/products/itemSelect', async (req, res) => {
   }
 });
 
+app.get('/items/itemSelect', async (req, res) => {
+  const keywordsSelect = req.query.keywords;
+  try {
+    const keywordQuery = 'SELECT * FROM product_info WHERE keywords LIKE $1';
+    const values = [`%${keywordsSelect}%`];
+    const result = await pool.query(keywordQuery, values);
+    const products = result.rows;
+    res.send(products);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
 app.get('/category/subcategory/', async (req, res) => {
   const itemNumber = req.query.item_number;
   try {

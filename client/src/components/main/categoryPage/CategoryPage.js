@@ -4,7 +4,7 @@ import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import './categoryPage.css';
 
-function CategoryPage({ category, subcategory, setSubCategory }) {
+function CategoryPage({ category, setSubCategory }) {
   console.log(category);
 
 
@@ -35,10 +35,8 @@ function CategoryPage({ category, subcategory, setSubCategory }) {
     
   
     return (
-      <>
-      
-      <main className='main'>        
-        <div className='product-list'>
+      <div className="category-page">
+        <div className='product-list-container'>
           {products.map((product, index) => (
             <>
             {console.log(product.subcategory)}
@@ -52,10 +50,10 @@ function CategoryPage({ category, subcategory, setSubCategory }) {
             </div>
             </>
           ))}
+          <br className='break'/>
         </div>
-      </main>
-      <br className='break'/>
-      </>
+      </div>
+    
     );
 }
 

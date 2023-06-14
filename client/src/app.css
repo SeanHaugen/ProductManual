@@ -6,18 +6,15 @@
     
 }
 
-
 .app {
     height: 300vh;
+    display: flex;
 }
 
-.tile {
-    max-height: 100%;
+.side-bar-container, .main-page-container {
+    position: absolute;
 }
 
-hr {
-    margin-top: 3em;
 
-}
 
 
