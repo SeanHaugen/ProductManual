@@ -5,6 +5,7 @@ const { Pool } = require('pg');
 const bodyParser = require('body-parser');
 
 
+
 const PORT = process.env.PORT || 4000;
 
 const pool = new Pool({
@@ -77,12 +78,33 @@ app.get('/products/itemSelect', async (req, res) => {
   }
 });
 
-app.get('/items/itemSelect', async (req, res) => {
-  const keywordsSelect = req.query.keywords;
+// app.get('/item/searchItem', async (req, res) => {
+//   try {
+//     const keywordQuery = 'SELECT * FROM product_info';
+//     const result = await pool.query(keywordQuery);
+//     const products = result.rows;
+//     res.send(products);
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).send('Internal Server Error');
+//   }
+// });
+
+
+
+app.get('/item/searchItem', async (req, res) => {
   try {
-    const keywordQuery = 'SELECT * FROM product_info WHERE keywords LIKE $1';
-    const values = [`%${keywordsSelect}%`];
-    const result = await pool.query(keywordQuery, values);
+    const keyword = req.query.keyword; // Retrieve the keyword from the query parameter
+    const searchQuery = `
+      SELECT * 
+      FROM product_info 
+      WHERE name ILIKE $1 
+        OR item_number ILIKE $1 
+        OR category ILIKE $1 
+        OR subcategory ILIKE $1
+    `;
+    const values = [`%${keyword}%`]; // Wrap the keyword with % to perform a partial match
+    const result = await pool.query(searchQuery, values);
     const products = result.rows;
     res.send(products);
   } catch (err) {
