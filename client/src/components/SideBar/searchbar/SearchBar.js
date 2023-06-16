@@ -10,13 +10,13 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 
 
-function SearchBar() {
+function SearchBar({setSearchData}) {
 
 
     const element = <FontAwesomeIcon icon={faSearch} />
 
 
-    const [searchData, setSearchData] = useState([]);
+    // const [searchData, setSearchData] = useState([]);
     const [query, setQuery] = useState('');
     // const [results, setResults] = useState([]);
 
@@ -33,11 +33,12 @@ function SearchBar() {
         }
         fetchData();
       }, [query]);
-    console.log(searchData)
-    console.log(query);
+    // console.log(searchData)
+    // console.log(query);
 
 
     const handleOnSearch = useCallback((event) => {
+        event.preventDefault();
         setQuery(event.target.value);
       })
 
@@ -48,7 +49,7 @@ function SearchBar() {
         <div>
         <form>
             <section className="search-section">
-                <input type="text" className="searchbar input is-medium" value={query} onChange={handleOnSearch} />
+                <input type="text" className="searchbar input is-medium is-rounded" value={query} onChange={handleOnSearch} />
                 <span className="icon is-large">
                     <button className="search-button icon is-large"  >
                         <i className="search-icon fas fa-search">{element}</i>
@@ -62,18 +63,14 @@ function SearchBar() {
         </div>
         <div>
             
-             <ul>
-                <li>Searched Items</li>
-                {searchData && searchData.map((item, index) => {
+                {/* {searchData.map((item, index) => {
                     return (
-                        <ul key={index} >
+                        <ul key={index}>
                             <li>{item}</li>
                         </ul>
-
                     )
+                })} */}
 
-                })}
-            </ul> 
         </div>
     </>
 

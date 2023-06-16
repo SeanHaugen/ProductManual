@@ -29,12 +29,31 @@ function App() {
   console.log(subCategory);
   console.log(item);  
   console.log(pin);
+
+//search bar stuff
+  ////////////////////////////////////////////////////////////////
+  const [searchData, setSearchData] = useState([]);
+  // const [query, setQuery] = useState('');
+  
   
   return (
     <Router>
     <div className="app">
-          <SideBar className="side-bar-container" pin={pin} setSelectedRoute={setSelectedRoute} setCategory={setCategory} setSubCategory={setSubCategory} /> 
-          <Main className="main-page-container" subCategory={subCategory} setSubCategory={setSubCategory} category={category} setItem={setItem} item={item} setPin={setPin} />
+          <SideBar className="side-bar-container" 
+            pin={pin} 
+            setSelectedRoute={setSelectedRoute} 
+            setCategory={setCategory} 
+            setSubCategory={setSubCategory}
+            setSearchData={setSearchData} /> 
+
+          <Main className="main-page-container" 
+            subCategory={subCategory} 
+            setSubCategory={setSubCategory} 
+            category={category} 
+            setItem={setItem} 
+            item={item} 
+            setPin={setPin}
+            searchData={searchData} />
     </div>
     </Router>
   );

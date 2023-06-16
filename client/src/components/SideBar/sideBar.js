@@ -11,7 +11,7 @@ import { faHome } from '@fortawesome/free-solid-svg-icons'
 
 
 
-function SideBar ({pin, setCategory, setSelectedRoute, setSubCategory}) {
+function SideBar ({pin, setCategory, setSelectedRoute, setSubCategory, setSearchData}) {
     const element = <FontAwesomeIcon icon={faHome} />
 
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -30,7 +30,8 @@ function SideBar ({pin, setCategory, setSelectedRoute, setSubCategory}) {
           </div>     
         </nav>
         <div className="searchbar-container">
-          <SearchBar className="searchbar" />
+          <SearchBar className="searchbar"            
+            setSearchData={setSearchData}  />
           <Menu className="navbar-menu" setSelectedRoute={setSelectedRoute} setCategory={setCategory} setSubCategory={setSubCategory} /> 
           
           
