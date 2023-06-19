@@ -12,7 +12,7 @@ function Menu({setSelectedRoute, setCategory, setSubCategory}) {
     const element = <FontAwesomeIcon icon={faChevronDown} />
     
 
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
     const [menuData, setMenuData] = useState([]);
     const [subMenuOpen, setSubMenuOpen] = useState(false);
     const [subMenuData, setSubMenuData] = useState([]);
@@ -88,13 +88,6 @@ function Menu({setSelectedRoute, setCategory, setSubCategory}) {
         setSubMenuOpen(true);
       };
     
-      const handleMouseLeave = () => {
-        // setSelectedCategory(null);
-        // setCategory('');
-        setSubMenuOpen(false);
-        setIsOpen(false);
-      };
-
 
     const handleCategoryClick = (cat) => {
     setCategory(cat);
@@ -107,19 +100,16 @@ function Menu({setSelectedRoute, setCategory, setSubCategory}) {
     return (
     <div className="dropdown is-active"> 
         <div className="dropdown-trigger">
-            <button className="button"  aria-haspopup="true" aria-controls="dropdown-menu" onClick={toggleMenu} >
+            {/* <button className="button"onClick={toggleMenu} >
                 <span>Products</span>
-                <span className="icon is-small" >
-                    <i className="fas fa-angle-down" aria-hidden="true" ></i>
+                <span className="icon is-small"    >
+                    {element}
                 </span>
-            </button>
-        <div className="dropdown-menu " id="dropdown-menu" role="menu" >
-            {isOpen && (
-                
-                <ul className="list">
-                    {menuData.map((cat, index ) => (
-                    <>
-                   
+            </button> */}
+        <div className="list-menu" >  
+            <ul className="list">
+                {menuData.map((cat, index ) => (
+                <>
                     <li key={index} onClick={() => handleCategoryHover(cat)}>
                         <button onClick={() => toggleSubMenu(cat)} >{element}</button>
                         <NavLink to={`${cat}`}  onClick={() => { setSelectedRoute(`${cat}`); handleCategoryClick(`${cat}`) }}>{cat}</NavLink>
@@ -127,22 +117,21 @@ function Menu({setSelectedRoute, setCategory, setSubCategory}) {
                         {subMenuOpen && (subMenu.includes(cat) && (
                             <div className="submenu" >
                                 <div>
-                                <ul>
-                                    {manipulateSubMenu(subMenuData).map((subCat, index) => (
-                                    <li key={index} className="submenu-list" >
-                                        <NavLink to={`${cat}/${subCat}`}  onClick={() => {setSelectedRoute(`${cat}/${subCat}`); handleSubCategoryClick(`${subCat}`)}}> {subCat}</NavLink>                         
-                                    </li>
-                                    ))}
-                                </ul>
+                                    <ul>
+                                        {manipulateSubMenu(subMenuData).map((subCat, index) => (
+                                        <li key={index} className="submenu-list" >
+                                            <NavLink to={`${cat}/${subCat}`}  onClick={() => {setSelectedRoute(`${cat}/${subCat}`); handleSubCategoryClick(`${subCat}`)}}> {subCat}</NavLink>                         
+                                        </li>
+                                        ))}
+                                    </ul>
                                 </div>
                             </div>
                         ))} 
-                        
                     </li>
-                    </>
-                    ))}
-                </ul>)
-            }
+                </>
+                ))}
+            </ul>
+            
         </div>
         </div>
     </div>

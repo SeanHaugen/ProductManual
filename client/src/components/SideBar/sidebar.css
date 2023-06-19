@@ -1,9 +1,10 @@
 
 
 .sidebar {
-  width: 30em;
-  background-color: rgb(95, 95, 95);
 
+  background-color: rgb(95, 95, 95);
+  border-radius: 5px;
+  width: 33em;
 }
 
 .sidebar ul {
@@ -15,14 +16,9 @@
   cursor: pointer;
 }
 
-.sidebar li:hover {
-  color: #b6b6b6;
-  /* background-color: #333; */
-}
 
-.searchbar {
-    margin-bottom: 10px;
-}
+
+
 
 .saved-items {
   position: relative;

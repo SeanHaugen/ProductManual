@@ -95,18 +95,12 @@ app.get('/products/itemSelect', async (req, res) => {
 app.get('/item/searchItem', async (req, res) => {
   try {
     const keyword = req.query.keyword; // Retrieve the keyword from the query parameter
-    const keyword2 = req.query.keyword2; //
+    const keywords = keyword.split(" "); // Split the keyword into individual words
     const searchQuery = `
       SELECT * 
       FROM product_info 
-      WHERE name ILIKE $1 
-        OR item_number ILIKE $1 
-        OR category ILIKE $1 
-        OR subcategory ILIKE $1
-        OR materials ILIKE $1
-        OR description ILIKE $1
-    `;
-    const values = [`%${keyword}%`]; // Wrap the keyword with % to perform a partial match
+      WHERE ${keywords.map((_, index) => `(name ILIKE $${index + 1} OR category ILIKE $${index + 1} OR subcategory ILIKE $${index + 1} OR item_number ILIKE $${index + 1} OR keywords ILIKE $${index + 1} OR description ILIKE $${index + 1})`).join(' AND ')}ORDER BY name ASC`;
+    const values = keywords.map((word) => `%${word}%`); // Wrap the keyword with % to perform a partial match
     const result = await pool.query(searchQuery, values);
     const products = result.rows;
     res.send(products);

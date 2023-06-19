@@ -1,0 +1,16 @@
+.icon {
+    position: fixed;
+    right: 2em;
+    color: rgb(249, 204, 11);
+    
+}
+
+span button {
+    background: transparent;
+    border: 1px solid rgb(249, 204, 11);
+    border-radius: 50%;
+
+    height: 8em;
+    width: 8em;
+    cursor: pointer;
+}

@@ -7,12 +7,12 @@
 }
 
 .app {
-    height: 300vh;
+    height: 100vh;
     display: flex;
 }
 
 .side-bar-container, .main-page-container {
-    position: absolute;
+    position: relative;
 }
 
 

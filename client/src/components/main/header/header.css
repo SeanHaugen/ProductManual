@@ -1,62 +1,24 @@
 .hero {
     background: linear-gradient(203deg,rgba(140, 98, 225, 0.867) 8.4%,rgba(38, 238, 201, 0.126) 30.67%, rgba(190, 247, 251, 0.333) 70.04%,hsla(270, 11%, 93%, 0.938) 100%);
-    width: 100%;
-
-
 }
 
 .hero-body {
-    /* height: 10em; 
-    display: flex;
-    justify-content: center;
-    position: relative; 
-    width: 100%; */
     display:flex;
     justify-content: center;
  
 }
 
 .header-image {
-    /* position: fixed; */
-    /* max-height: 24em; */
-    /* transition: opacity 0.5s;
-    z-index: -1;
-    color: rgb(249, 204, 11); */
-    /* height: 24em; */
     width: 30%;
     position: relative;
 }
 
 
-.navbar-menu {
-    position: fixed;
-    left: 10px;
-}
-
-.icon {
-    position: fixed;
-    right: 2em;
-    color: rgb(249, 204, 11);
-    
-}
-
-span button {
-    background: transparent;
-    border: 1px solid rgb(249, 204, 11);
-    border-radius: 50%;
-    
-    height: 8em;
-    width: 8em;
-    cursor: pointer;
-    
-}
 
 .home {
     color: rgb(249, 204, 11)
     
 }
-
-
 
 hr .break {
     z-index: 50;

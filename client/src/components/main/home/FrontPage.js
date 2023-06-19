@@ -1,27 +1,37 @@
-import React from "react"
+import React, {useState} from "react"
 // import ApiData from '../APIData';
 import './frontPage.css';
 import { NavLink } from 'react-router-dom';
 
+
 import FrontPageSection from "./FrontPageSections/Section3";
 
 function FrontPage({searchData, setItem}) {
-  console.log(searchData);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(10);
 
     return (
       <>
-        <p>This is the main page, search results will appear below</p>
+        <h1>Digital Catalog</h1>
+        <div className='product-list-container'>
         {searchData.map((product) => {
           return (
-            <div>
-             <NavLink to={`category/subcategory/${product.item_number}`} onClick={() => setItem(`${product.item_number}`)}>
+            <div className='product-list-items'>
+             <NavLink  className='column is-mobile product box' to={`category/subcategory/${product.item_number}`} onClick={() => setItem(`${product.item_number}`)}>
                 <ul key={product.item_number}>
                   {product.name} - {product.item_number}
                 </ul>
               </NavLink>
           </div>
-
         )})}
+        <div        
+          current={currentPage}
+          total={totalPages}
+          onChange={setCurrentPage}
+        />
+        
+        </div>
     </>
     )
 }
