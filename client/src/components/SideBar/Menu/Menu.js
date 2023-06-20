@@ -12,7 +12,7 @@ function Menu({setSelectedRoute, setCategory, setSubCategory}) {
     const element = <FontAwesomeIcon icon={faChevronDown} />
     
 
-    const [isOpen, setIsOpen] = useState(true);
+    // const [isOpen, setIsOpen] = useState(true);
     const [menuData, setMenuData] = useState([]);
     const [subMenuOpen, setSubMenuOpen] = useState(false);
     const [subMenuData, setSubMenuData] = useState([]);
@@ -22,8 +22,7 @@ function Menu({setSelectedRoute, setCategory, setSubCategory}) {
 
 
 //use Effect functions. The first populates teh product categories. the second populates the subcategories related to the selected category
-    useEffect(() => {
-        
+    useEffect(() => {     
     const fetchData = async () => {
         try {
             const endpoint = ``;
@@ -60,9 +59,9 @@ function Menu({setSelectedRoute, setCategory, setSubCategory}) {
 
 
     //toggle munu functions
-    const toggleMenu = () => {
-        setIsOpen(!isOpen);
-        };
+    // const toggleMenu = () => {
+    //     setIsOpen(!isOpen);
+    //     };
 
     const toggleSubMenu = (category) => {
         if (subMenu.includes(category)) {
@@ -108,9 +107,9 @@ function Menu({setSelectedRoute, setCategory, setSubCategory}) {
             </button> */}
         <div className="list-menu" >  
             <ul className="list">
-                {menuData.map((cat, index ) => (
-                <>
-                    <li key={index} onClick={() => handleCategoryHover(cat)}>
+                {menuData.map((cat) => (
+            
+                    <li key={cat} onClick={() => handleCategoryHover(cat)}>
                         <button onClick={() => toggleSubMenu(cat)} >{element}</button>
                         <NavLink to={`${cat}`}  onClick={() => { setSelectedRoute(`${cat}`); handleCategoryClick(`${cat}`) }}>{cat}</NavLink>
 
@@ -118,8 +117,8 @@ function Menu({setSelectedRoute, setCategory, setSubCategory}) {
                             <div className="submenu" >
                                 <div>
                                     <ul>
-                                        {manipulateSubMenu(subMenuData).map((subCat, index) => (
-                                        <li key={index} className="submenu-list" >
+                                        {manipulateSubMenu(subMenuData).map((subCat) => (
+                                        <li key={subCat} className="submenu-list" >
                                             <NavLink to={`${cat}/${subCat}`}  onClick={() => {setSelectedRoute(`${cat}/${subCat}`); handleSubCategoryClick(`${subCat}`)}}> {subCat}</NavLink>                         
                                         </li>
                                         ))}
@@ -128,7 +127,7 @@ function Menu({setSelectedRoute, setCategory, setSubCategory}) {
                             </div>
                         ))} 
                     </li>
-                </>
+                
                 ))}
             </ul>
             

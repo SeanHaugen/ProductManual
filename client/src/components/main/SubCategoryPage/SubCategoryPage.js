@@ -4,7 +4,7 @@ import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 
 function SubCategoryPage({subCategory, setItem}) {
-    console.log(subCategory);
+    // console.log(subCategory);
 
     const [products, setProducts] = useState([]);
     const [error, setError] = useState('');
@@ -28,7 +28,7 @@ function SubCategoryPage({subCategory, setItem}) {
       return <div>{error}</div>;
     }
 
-    console.log(products);
+    // console.log(products);
 
     
   
@@ -38,15 +38,14 @@ function SubCategoryPage({subCategory, setItem}) {
       <div className='sub-cat-page'>        
         <div className='product-list'>
           {products.map((product) => (
-            <>
-            {/* <h2>{product.category}</h2> */}
-            <div key={product.item_number} className='product-list-items'>
+            <div  className='product-list-items' key={product.item_number}>
+            <h2>{product.category}</h2>
               <NavLink to={`${product.item_number}`} className='column is-mobile product box' onClick={() => setItem(`${product.item_number}`)} >
               <img src="https://fakeimg.pl/150x175" alt="placeholder"></img>
               {product.name} - {product.item_number} 
               </NavLink>
             </div>
-            </>
+            
           ))}
         </div>
       </div>

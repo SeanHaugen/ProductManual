@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import Header from './header/Header';
@@ -22,7 +22,7 @@ function main({setSelectedRoute, setCategory, setSubCategory,setItem, subCategor
           <Routes>
             <Route path="/:category/:subCategory" element={<SubCategoryPage subCategory={subCategory} setItem={setItem} />} />
             <Route path="/:category" element={<CategoryPage category={category} subCategory={subCategory} item={item} setSubCategory={setSubCategory}/>} />
-            <Route path='/:category/:subCategory/:item' element={<ItemPage item={item} setPin={setPin} />} />
+            <Route path='/:category/:subCategory/:item' element={<ItemPage item={item} setPin={setPin} searchData={searchData} />} />
             {/* <Route path='/:productSearch/:itemSearch'   /> */}
             <Route path='' element={<FrontPage searchData={searchData} setItem={setItem} />}  />
             

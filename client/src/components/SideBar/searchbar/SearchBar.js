@@ -1,11 +1,11 @@
 import React, {useState, useEffect, useCallback} from "react";
 
 import axios from "axios";
-import Fuse from 'fuse.js'
+// import Fuse from 'fuse.js'
 
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -13,7 +13,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 function SearchBar({setSearchData}) {
 
 
-    const element = <FontAwesomeIcon icon={faSearch} />
+    // const element = <FontAwesomeIcon icon={faSearch} />
 
 
     // const [searchData, setSearchData] = useState([]);

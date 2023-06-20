@@ -8,6 +8,7 @@ function ItemPricingTable({item}) {
     const [products, setProducts] = useState([]);
     const [error, setError] = useState('');
 
+    console.log(error);
   
     useEffect(() => {
       const fetchProducts = async () => {
@@ -32,7 +33,7 @@ function ItemPricingTable({item}) {
     return (
         <>
  {products.map((product) => (
-            <>
+            <div key={product.item_number}>
                <table className="table">
                 <thead>
                   <tr>
@@ -100,7 +101,7 @@ function ItemPricingTable({item}) {
                 </tbody>
 
                </table>
-               </>
+               </div>
         ))
         }
         </>

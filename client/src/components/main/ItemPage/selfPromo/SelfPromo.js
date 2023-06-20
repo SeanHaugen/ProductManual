@@ -11,7 +11,7 @@ function SelfPromo({product}) {
 
     return (
         <>
-        <div>
+        <div className="box">
             Self Promo Price: {selfPromoPrice()}
         </div>
         

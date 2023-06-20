@@ -4,13 +4,13 @@ import './header.css';
 import logo from '../../../data/img/logo1.png';
 
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome } from '@fortawesome/free-solid-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faHome } from '@fortawesome/free-solid-svg-icons'
 
 
 function Header({setSelectedRoute, setCategory, setSubCategory, pin}) {
 
-    const element = <FontAwesomeIcon icon={faHome} />
+    // const element = <FontAwesomeIcon icon={faHome} />
 
     const [scrollPos, setScrollPos] = useState(0);
     const [scrollStarted, setScrollStarted] = useState(false);

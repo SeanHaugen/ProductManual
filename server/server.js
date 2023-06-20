@@ -78,19 +78,6 @@ app.get('/products/itemSelect', async (req, res) => {
   }
 });
 
-// app.get('/item/searchItem', async (req, res) => {
-//   try {
-//     const keywordQuery = 'SELECT * FROM product_info';
-//     const result = await pool.query(keywordQuery);
-//     const products = result.rows;
-//     res.send(products);
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).send('Internal Server Error');
-//   }
-// });
-
-
 
 app.get('/item/searchItem', async (req, res) => {
   try {
@@ -111,7 +98,7 @@ app.get('/item/searchItem', async (req, res) => {
 });
 
 app.get('/category/subcategory/', async (req, res) => {
-  const itemNumber = req.query.item_number;
+  const itemNumber = req.query.item_number; // Retrieve the itemNumber from the query parameter
   try {
     const categoryQuery = 'SELECT * FROM product_info WHERE item_number = $1';
     const values = [itemNumber];

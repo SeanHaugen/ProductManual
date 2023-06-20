@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from "react"
-import axios from "axios";
+import React from "react"
 import './sidebar.css';
 import Menu from "./Menu/Menu";
 import SearchBar from "./searchbar/SearchBar";
@@ -14,11 +13,11 @@ import { faHome } from '@fortawesome/free-solid-svg-icons'
 function SideBar ({pin, setCategory, setSelectedRoute, setSubCategory, setSearchData}) {
     const element = <FontAwesomeIcon icon={faHome} />
 
-    const [sidebarOpen, setSidebarOpen] = useState(false);
+    // const [sidebarOpen, setSidebarOpen] = useState(false);
 
-    const handleSidebarClick = () => {
-      setSidebarOpen(!sidebarOpen);
-    };
+    // const handleSidebarClick = () => {
+    //   setSidebarOpen(!sidebarOpen);
+    // };
   
     return (
       <div className="sidebar">

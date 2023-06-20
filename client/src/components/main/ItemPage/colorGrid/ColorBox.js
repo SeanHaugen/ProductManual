@@ -2,7 +2,7 @@ import React from "react"
 import './colorBox.css';
 
 function ColorBox({product}) {
-    console.log(product.colors.split(','));
+    // console.log(product.colors.split(','));
 
 
     const colorMap = {

@@ -14,24 +14,21 @@ import SideBar from './components/SideBar/sideBar';
 
 function App() {
 
-  
-
-  
   //Routing state variables
   const [selectedRoute, setSelectedRoute] = useState("");
-  console.log(selectedRoute);
-
   const [category, setCategory] = useState("");
   const [subCategory, setSubCategory] = useState("");
   const [item, setItem ] = useState("");
   const [pin, setPin] = useState([]);
-  console.log(category);
-  console.log(subCategory);
-  console.log(item);  
-  console.log(pin);
+
+  //--->console.log statements for the above
+  console.log(selectedRoute);
+  // console.log(category);
+  // console.log(subCategory);
+  // console.log(item);  
+  // console.log(pin);
 
 //search bar stuff
-  ////////////////////////////////////////////////////////////////
   const [searchData, setSearchData] = useState([]);
   // const [query, setQuery] = useState('');
   

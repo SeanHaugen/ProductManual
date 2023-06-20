@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import './categoryPage.css';
 
 function CategoryPage({ category, setSubCategory }) {
-  console.log(category);
+
 
 
     const [products, setProducts] = useState([]);
@@ -30,25 +30,25 @@ function CategoryPage({ category, setSubCategory }) {
       return <div>{error}</div>;
     }
 
-    console.log(products);
+
 
     
   
     return (
       <div className="category-page">
         <div className='product-list-container'>
-          {products.map((product, index) => (
-            <>
-            {console.log(product.subcategory)}
+          {products.map((product) => (
+            <div key={product.subcategory}>
+            {/* {console.log(product)} */}
             <h2>{product.category}</h2>
-            <div key={index} className='product-list-items'>
+            <div className='product-list-items'>
               <NavLink to={`${product.subcategory}`} className='column is-mobile product box' onClick={() => setSubCategory(product.subcategory)}  >
                 <img src="https://fakeimg.pl/150x175" alt="placeholder"></img>
                 <br />
                {product.subcategory} 
               </NavLink>
             </div>
-            </>
+            </div>
           ))}
           <br className='break'/>
         </div>
