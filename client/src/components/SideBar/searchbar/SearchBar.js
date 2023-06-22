@@ -1,26 +1,19 @@
 import React, {useState, useEffect, useCallback} from "react";
 
 import axios from "axios";
-// import Fuse from 'fuse.js'
+import Fuse from 'fuse.js'
+
 
 
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
-
-
-
-function SearchBar({setSearchData}) {
-
+function SearchBar({setSearchData, searchData}) {
 
     // const element = <FontAwesomeIcon icon={faSearch} />
-
-
     // const [searchData, setSearchData] = useState([]);
     const [query, setQuery] = useState('');
     // const [results, setResults] = useState([]);
-
-
 
     useEffect(() => {
         async function fetchData() {
@@ -40,7 +33,10 @@ function SearchBar({setSearchData}) {
     const handleOnSearch = useCallback((event) => {
         event.preventDefault();
         setQuery(event.target.value);
+        
       })
+
+
 
 
     return (

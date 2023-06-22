@@ -5,11 +5,14 @@ import SelfPromo from "./selfPromo/SelfPromo";
 import ColorBox from "./colorGrid/ColorBox";
 import './itemPg.css';
 import RelatedItems from "./relatedItems/RelatedItems";
+import FlatRateShipping from "./flatRate/FlatRateShip";
+
+
 import FedexTool from "./fedexTool/FedexTool";
 
 function ItemPage({setPin, item, searchData}) {
     
-    // console.log(item);
+    console.log(item);
 
     const [products, setProducts] = useState([]);
     const [error, setError] = useState('');
@@ -57,14 +60,15 @@ function ItemPage({setPin, item, searchData}) {
                 <h2>{product.item_number}</h2> 
                 <p>{product.description}</p> 
                 <p>{product.kit_includes}</p>
+                <p>Lead time: {product.lead_times} business days</p>
                 <ItemPricingTable item={item} />
-                
-                
+
               </div>
               <button onClick={handlePin}>Save to Favs</button>
               <SelfPromo product={product} />
               <ColorBox product={product} />
               <RelatedItems product={product} searchData={searchData} item={item}/>
+              <FlatRateShipping item={item} />
               <FedexTool product={product} />
 
             </div>

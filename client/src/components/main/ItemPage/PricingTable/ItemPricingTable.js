@@ -42,7 +42,7 @@ function ItemPricingTable({item}) {
                       <th scope="col" >QTY 2-5</th>
                       <th scope="col" >QTY 6-11</th>
                       <th scope="col" >QTY 12-24</th>
-                      <th scope="col" >QTY 25-50</th>
+                      <th scope="col" >QTY 25-49</th>
                   </tr>
                 </thead>
                 <tbody>

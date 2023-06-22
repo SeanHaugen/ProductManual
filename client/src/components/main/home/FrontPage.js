@@ -13,6 +13,8 @@ function FrontPage({searchData, setItem}) {
 
 
 
+
+
     return (
       <>
         <h1>Digital Catalog</h1>

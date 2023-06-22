@@ -2,11 +2,18 @@ import React from "react";
 
 import './relatedItems.css';
 
-////Everything currently here is a placeholder. I will need to create further implementation for desired functionality
+////Everything currently here is a placeholder. I will need to create further implementation for desired functionality. 
+///is not very effective but will work for now as a placeholder until it can be refined. 
 
 function RelatedItems({ product, searchData }) {
 
-  let productKeywordsList = product.keywords.split(' ');
+  // console.log(product)
+  
+  // console.log(productKeywordsList);
+  // console.log(filteredItems);
+
+  
+    let productKeywordsList = product.keywords.split(' ');
 
 
   const calculateSimilarity = (keywords1, keywords2) => {
@@ -19,14 +26,15 @@ function RelatedItems({ product, searchData }) {
     const itemKeywordsList = item.keywords.split(' ');
     const similarity = calculateSimilarity(productKeywordsList, itemKeywordsList);
     return similarity >= 0.9;
+
   });
   console.log(filteredItems.map(item => item.name));
 
   
 
     return (
-      <div className="related-items-sidebar">
-        <div className="box">
+      <div className="related-items-sidebar box">
+        <div>
           Related Items: 
           <ul>
           {filteredItems.map(item => <li>{item.name}</li>)}
@@ -83,3 +91,24 @@ export default RelatedItems;
   //   }
 
   // console.log(handleMatchingKeywords(productKeywordsList, itemKeywordsList))
+
+
+
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////
+    // let productKeywordsList = product.keywords.split(' ');
+
+
+  // const calculateSimilarity = (keywords1, keywords2) => {
+  //   const intersection = new Set(keywords1.filter(keyword => keywords2.includes(keyword)));
+  //   const union = new Set([...keywords1, ...keywords2]);
+  //   return intersection.size / union.size;
+  // };
+
+  // const filteredItems = searchData.filter(item => {
+  //   const itemKeywordsList = item.keywords.split(' ');
+  //   const similarity = calculateSimilarity(productKeywordsList, itemKeywordsList);
+  //   return similarity >= 0.9;
+
+  // });
+  // console.log(filteredItems.map(item => item.name));

@@ -30,7 +30,6 @@ function App() {
 
 //search bar stuff
   const [searchData, setSearchData] = useState([]);
-  // const [query, setQuery] = useState('');
   
   
   return (
@@ -41,7 +40,8 @@ function App() {
             setSelectedRoute={setSelectedRoute} 
             setCategory={setCategory} 
             setSubCategory={setSubCategory}
-            setSearchData={setSearchData} /> 
+            setSearchData={setSearchData}
+            searchData={searchData} /> 
 
           <Main className="main-page-container" 
             subCategory={subCategory} 

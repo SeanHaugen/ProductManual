@@ -78,6 +78,8 @@ app.get('/products/itemSelect', async (req, res) => {
   }
 });
 
+//search request 
+
 
 app.get('/item/searchItem', async (req, res) => {
   try {
@@ -116,6 +118,34 @@ function logger (req, res, next) {
   next();
 }
 
-app.listen(PORT, () => {
+
+  ////////////
+  //Server code for flat rate shipping
+
+  app.get('/item/flat_rate_shipping', async (req, res) => {
+    const item = req.query.item_no;
+    console.log(req.query.item_no)
+    try {
+    let query = 'SELECT DISTINCT service, rate FROM flat_rate_shipping WHERE item_no = $1 ORDER BY rate ASC';
+    const values = [item];
+    let result = await pool.query(query, values)
+    const flatRates = result.rows.map((row) => ({
+      service: row.service,
+      rate: row.rate
+    }));
+    res.send(flatRates);
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("Internal Server Error!");
+    }
+    
+  });
+
+
+
+
+
+
+  app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);
   });
