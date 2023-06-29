@@ -1,60 +1,59 @@
-
-import React, {useState, useEffect} from 'react';
-import axios from 'axios';
-import { NavLink } from 'react-router-dom';
-import './categoryPage.css';
+import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import { fetchSubCategoryData } from "../../custom_hooks/apiCalls";
+import "./categoryPage.css";
 
 function CategoryPage({ category, setSubCategory }) {
+  const [productsCategory, setProductsCategory] = useState([]);
 
+  fetchSubCategoryData(setProductsCategory, category);
 
-
-    const [products, setProducts] = useState([]);
-    const [error, setError] = useState('');
-  
-    useEffect(() => {
-      const fetchProducts = async () => {
-        try {
-          const response = await axios.get(`/products/categorySelect?category=${category}`);
-          setProducts(response.data);
-        } catch (err) {
-          setError('Internal Server Error');
-          console.error(err);
-        }
-      };
-  
-      fetchProducts();
-    }, [category]);
-
-
-    if (error) {
-      return <div>{error}</div>;
-    }
-
-
-
-    
-  
-    return (
-      <div className="category-page">
-        <div className='product-list-container'>
-          {products.map((product) => (
-            <div key={product.subcategory}>
+  return (
+    <div className="category-page">
+      <div className="product-list-container">
+        <h2>{category}</h2>
+        {productsCategory.map((product) => (
+          <div key={product}>
             {/* {console.log(product)} */}
-            <h2>{product.category}</h2>
-            <div className='product-list-items'>
-              <NavLink to={`${product.subcategory}`} className='column is-mobile product box' onClick={() => setSubCategory(product.subcategory)}  >
+
+            <div className="product-list-items">
+              <NavLink
+                to={`${product}`}
+                className="column is-mobile product box"
+                onClick={() => setSubCategory(product)}
+              >
                 <img src="https://fakeimg.pl/150x175" alt="placeholder"></img>
                 <br />
-               {product.subcategory} 
+                {product}
               </NavLink>
             </div>
-            </div>
-          ))}
-          <br className='break'/>
-        </div>
+          </div>
+        ))}
+        <br className="break" />
       </div>
-    
-    );
+    </div>
+  );
 }
 
 export default CategoryPage;
+
+//
+//
+//
+///
+//
+///
+
+// useEffect(() => {
+//   const fetchProducts = async () => {
+//     try {
+//       const response = await axios.get(`/products/categorySelect?category=${category}`);
+//       setProducts(response.data);
+//     } catch (err) {
+//       setError('Internal Server Error');
+//       console.error(err);
+//     }
+//   };
+
+//   fetchProducts();
+// }, [category]);

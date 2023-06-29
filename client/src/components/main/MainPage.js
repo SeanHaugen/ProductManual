@@ -1,37 +1,88 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 
-import Header from './header/Header';
-import FrontPage from './home/FrontPage';
-import CategoryPage from './categoryPage/CategoryPage';
-import SubCategoryPage from './SubCategoryPage/SubCategoryPage';
-import ItemPage from './ItemPage/ItemPage';
-import SearchPage from './searchpage/SearchPage';
+import Header from "./header/Header";
+import CategoryPage from "./categoryPage/CategoryPage";
+import SubCategoryPage from "./SubCategoryPage/SubCategoryPage";
+import ItemPage from "./ItemPage/ItemPage";
+import SearchPage from "./searchPage/SearchPage";
+import FrontPage from "./frontPage/FrontPage";
 
-function main({setSelectedRoute, setCategory, setSubCategory,setItem, subCategory, category, item, setPin,searchData } ) {
+function main({
+  setSubCategory,
+  products,
+  category,
+  setItem,
+  searchData,
+  item,
+  productData,
+}) {
+  //  console.log(searchData);
 
-    //  console.log(searchData);
-
-    return (
-        <>
-        <main className='main-container'>
+  return (
+    <>
+      <main className="main-container">
         <header>
-          <Header setSelectedRoute={setSelectedRoute} setCategory={setCategory} setSubCategory={setSubCategory} />
+          <Header />
         </header>
-      <div className='routes-container'>
+        <div className="routes-container">
           <Routes>
-            <Route path="/:category/:subCategory" element={<SubCategoryPage subCategory={subCategory} setItem={setItem} />} />
-            <Route path="/:category" element={<CategoryPage category={category} subCategory={subCategory} item={item} setSubCategory={setSubCategory}/>} />
-            <Route path='/:category/:subCategory/:item' element={<ItemPage item={item} setPin={setPin} searchData={searchData} />} />
+            <Route path="/" element={<FrontPage />} />
+            <Route
+              path="/:category"
+              element={
+                <CategoryPage
+                  category={category}
+                  setSubCategory={setSubCategory}
+                />
+              }
+            />
+            <Route
+              path="/:category/:subCategory"
+              element={
+                <SubCategoryPage products={products} setItem={setItem} />
+              }
+            />
+            <Route
+              path="/:search-term"
+              element={
+                <SearchPage
+                  searchData={searchData}
+                  category={category}
+                  products={products}
+                  setItem={setItem}
+                />
+              }
+            />
+            <Route
+              path="/search-term/:item_number"
+              element={
+                <ItemPage
+                  searchData={searchData}
+                  products={products}
+                  item={item}
+                  productData={productData}
+                />
+              }
+            />
+            <Route
+              path="/:category/:subCategory/:item"
+              element={
+                <ItemPage
+                  searchData={searchData}
+                  products={products}
+                  item={item}
+                  productData={productData}
+                />
+              }
+            />
+
             {/* <Route path='/:productSearch/:itemSearch'   /> */}
-            <Route path='' element={<FrontPage searchData={searchData} setItem={setItem} />}  />
-            
           </Routes>
-      </div>
+        </div>
       </main>
-        
-        </>
-    )
+    </>
+  );
 }
 
 export default main;

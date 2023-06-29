@@ -1,114 +1,103 @@
 import React from "react";
 
-import './relatedItems.css';
+import "./relatedItems.css";
 
-////Everything currently here is a placeholder. I will need to create further implementation for desired functionality. 
-///is not very effective but will work for now as a placeholder until it can be refined. 
+////Everything currently here is a placeholder. I will need to create further implementation for desired functionality.
+///is not very effective but will work for now as a placeholder until it can be refined.
 
 function RelatedItems({ product, searchData }) {
-
   // console.log(product)
-  
+
   // console.log(productKeywordsList);
   // console.log(filteredItems);
 
-  
-    let productKeywordsList = product.keywords.split(' ');
+  console.log(product);
 
+  let productKeywordsList = product.keywords.split(" ");
 
   const calculateSimilarity = (keywords1, keywords2) => {
-    const intersection = new Set(keywords1.filter(keyword => keywords2.includes(keyword)));
+    const intersection = new Set(
+      keywords1.filter((keyword) => keywords2.includes(keyword))
+    );
     const union = new Set([...keywords1, ...keywords2]);
     return intersection.size / union.size;
   };
 
-  const filteredItems = searchData.filter(item => {
-    const itemKeywordsList = item.keywords.split(' ');
-    const similarity = calculateSimilarity(productKeywordsList, itemKeywordsList);
-    return similarity >= 0.9;
-
-  });
-  console.log(filteredItems.map(item => item.name));
-
-  
-
-    return (
-      <div className="related-items-sidebar box">
-        <div>
-          Related Items: 
-          <ul>
-          {filteredItems.map(item => <li>{item.name}</li>)}
-          </ul>
-        </div>
-      </div>
+  const filteredItems = searchData.filter((item) => {
+    const itemKeywordsList = item.keywords.split(" ");
+    const similarity = calculateSimilarity(
+      productKeywordsList,
+      itemKeywordsList
     );
-  }
+    return similarity >= 0.9;
+  });
+  console.log(filteredItems.map((item) => item.name));
 
+  return (
+    <div className="related-items-sidebar box">
+      <div>
+        Related Items:
+        <ul>
+          {filteredItems.map((item) => (
+            <li key={item.item_number}>{item.name}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
 
 export default RelatedItems;
 
+// let itemKeywords = searchData.flatMap(item => item.keywords)
 
+// const handleMatchingKeywords = (keywords1, keywords2) => {
 
+//   let itemArray = searchData.map(item => item);
+//   console.log(itemArray)
+//   console.log(itemArray.map(item => item.name));
 
+//   let keywordConverter1 = (arr) => {
+//     return arr.map((keyword) => keyword.replace(/,/g, '').trim().toLowerCase());
+//   }
 
-  // let itemKeywords = searchData.flatMap(item => item.keywords)
+//   let keywordConverter2 = (arr) => {
+//     return arr.map((subArray) => {
+//       return subArray.map((keyword) => keyword.replace(/,/g, '').trim().toLowerCase());
+//     });
+//   }
 
-  // const handleMatchingKeywords = (keywords1, keywords2) => {
+//   let keywordsConverted1 = keywordConverter1(keywords1);
+//   let keywordsConverted2 = keywordConverter2(keywords2);
 
-  //   let itemArray = searchData.map(item => item);
-  //   console.log(itemArray)
-  //   console.log(itemArray.map(item => item.name));
+//   let matching = keywordsConverted1.filter(keyword => {
+//     for (let i = 0; i < keywordsConverted2.length; i++) {
+//       if (keywordsConverted2[i].includes(keyword)) {
+//         return true;
+//       }
+//     }
+//     return false;
+//   });
 
+//   return matching
 
+//   }
 
-  //   let keywordConverter1 = (arr) => {
-  //     return arr.map((keyword) => keyword.replace(/,/g, '').trim().toLowerCase());
-  //   }
+// console.log(handleMatchingKeywords(productKeywordsList, itemKeywordsList))
 
-  //   let keywordConverter2 = (arr) => {
-  //     return arr.map((subArray) => {
-  //       return subArray.map((keyword) => keyword.replace(/,/g, '').trim().toLowerCase());
-  //     });
-  //   }
+////////////////////////////////////////////////////////////////////////////////////////////////
+// let productKeywordsList = product.keywords.split(' ');
 
-  //   let keywordsConverted1 = keywordConverter1(keywords1);
-  //   let keywordsConverted2 = keywordConverter2(keywords2);  
-    
+// const calculateSimilarity = (keywords1, keywords2) => {
+//   const intersection = new Set(keywords1.filter(keyword => keywords2.includes(keyword)));
+//   const union = new Set([...keywords1, ...keywords2]);
+//   return intersection.size / union.size;
+// };
 
+// const filteredItems = searchData.filter(item => {
+//   const itemKeywordsList = item.keywords.split(' ');
+//   const similarity = calculateSimilarity(productKeywordsList, itemKeywordsList);
+//   return similarity >= 0.9;
 
-  //   let matching = keywordsConverted1.filter(keyword => {
-  //     for (let i = 0; i < keywordsConverted2.length; i++) {
-  //       if (keywordsConverted2[i].includes(keyword)) {
-  //         return true;
-  //       }
-  //     }
-  //     return false;
-  //   });
-    
-  //   return matching
-    
-
-  //   }
-
-  // console.log(handleMatchingKeywords(productKeywordsList, itemKeywordsList))
-
-
-
-
-  ////////////////////////////////////////////////////////////////////////////////////////////////
-    // let productKeywordsList = product.keywords.split(' ');
-
-
-  // const calculateSimilarity = (keywords1, keywords2) => {
-  //   const intersection = new Set(keywords1.filter(keyword => keywords2.includes(keyword)));
-  //   const union = new Set([...keywords1, ...keywords2]);
-  //   return intersection.size / union.size;
-  // };
-
-  // const filteredItems = searchData.filter(item => {
-  //   const itemKeywordsList = item.keywords.split(' ');
-  //   const similarity = calculateSimilarity(productKeywordsList, itemKeywordsList);
-  //   return similarity >= 0.9;
-
-  // });
-  // console.log(filteredItems.map(item => item.name));
+// });
+// console.log(filteredItems.map(item => item.name));

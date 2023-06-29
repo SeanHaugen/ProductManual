@@ -1,38 +1,58 @@
-import React, {useState} from "react"
+import React, { useState } from "react";
+import { fetchItemData } from "../../custom_hooks/apiCalls";
 
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown, faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
 
+function SavedItems({ productData }) {
+  const element = <FontAwesomeIcon icon={faChevronDown} />;
+  const deleteElement = <FontAwesomeIcon icon={faDeleteLeft} />;
 
-function SavedItems ({pin}) {
-
-  const element = <FontAwesomeIcon icon={faChevronDown} />
-
+  console.log(productData);
   const [isOpen, setIsOpen] = useState(false);
 
-  //toggle munu functions
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-    };
+  };
 
-    return (
+  const removePin = (itemId) => {
+    const pinIndex = productData.findIndex((item) => item.id === itemId);
+    // if (pinIndex !== -1) {
+    //   const updatedPin = [...pin];
+    //   updatedPin.splice(pinIndex, 1);
+    //   setPin(updatedPin);
+    // }
+  };
 
-        <>
-        <div className="saved-items ">
-          
-          <button onClick={toggleMenu} className="button toggle-saved-items">{element}Saved Items</button>
-        <ul>
-          {isOpen && (pin.map((item, index) => (
-            <li key={item.id}>
-              <NavLink to={`category/subcategory/${item}`} className="saved" key={index}>{item}</NavLink>
-            </li>
-          )))}
-        </ul>
+  return (
+    <>
+      <div className="saved-items ">
+        <button onClick={toggleMenu} className="button toggle-saved-items">
+          {element}Saved Items
+        </button>
+        <div>
+          {isOpen &&
+            productData.map((item) => (
+              <ul>
+                <li key={item.item_number}>
+                  <NavLink
+                    to={`search-term/${item.item_number}`}
+                    className="saved"
+                  >
+                    {item.item_number}
+                  </NavLink>
+                  <button onClick={() => removePin(item.item_number)}>
+                    {deleteElement}
+                  </button>
+                </li>
+              </ul>
+            ))}
         </div>
-        </>
-    )
+      </div>
+    </>
+  );
 }
 
 export default SavedItems;
