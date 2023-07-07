@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { fetchSearchData } from "../../custom_hooks/apiCalls";
-import axios from "axios";
-import Fuse from "fuse.js";
+import ReactPaginate from "react-paginate";
+import SearchPage from "./searchDropdown/SearchDropdown";
 
-import { NavLink, useNavigate } from "react-router-dom";
-import { useHistory } from "react-router";
+import { NavLink, Routes, Route, useNavigate } from "react-router-dom";
 
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faSearch } from '@fortawesome/free-solid-svg-icons'
-
-function SearchBar({ setSearchData }) {
+function SearchBar({
+  setSearchData,
+  query,
+  setQuery,
+  searchData,
+  setItem,
+  itemsPerPage,
+  products,
+  category,
+  item,
+}) {
   const navigate = useNavigate();
-  // const element = <FontAwesomeIcon icon={faSearch} />
-  // const [searchData, setSearchData] = useState([]);
-  const [query, setQuery] = useState("");
-  // const [results, setResults] = useState([]);
 
   fetchSearchData(setSearchData, query);
 
@@ -28,9 +30,6 @@ function SearchBar({ setSearchData }) {
     navigate(`search-term`);
   };
 
-  // console.log(searchData);
-  // console.log(query);
-
   return (
     <>
       <div>
@@ -38,7 +37,7 @@ function SearchBar({ setSearchData }) {
           <section className="search-section">
             <input
               type="text"
-              className="searchbar input is-medium is-rounded"
+              className="searchbar input is-medium"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
@@ -48,6 +47,22 @@ function SearchBar({ setSearchData }) {
             </button>
           </section>
         </form>
+        <Routes>
+          <Route
+            path="/:search-term"
+            element={
+              <SearchPage
+                searchData={searchData}
+                category={category}
+                products={products}
+                setItem={setItem}
+                item={item}
+                itemsPerPage={15}
+                query={query}
+              />
+            }
+          />
+        </Routes>
       </div>
     </>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import "./sidebar.css";
 import Menu from "./Menu/Menu";
-import SearchBar from "./searchbar/SearchBar";
+import SearchBar from "../main/searchbar/SearchBar";
 import SavedItems from "./savedItems/SavedItems";
 
 import { NavLink } from "react-router-dom";
@@ -17,6 +17,8 @@ function SideBar({
   setItem,
   item,
   productData,
+  query,
+  setQuery,
 }) {
   const element = <FontAwesomeIcon icon={faHome} />;
 
@@ -45,12 +47,6 @@ function SideBar({
         </div>
       </nav>
       <div className="searchbar-container">
-        <SearchBar
-          className="searchbar"
-          setSearchData={setSearchData}
-          searchData={searchData}
-          setItem={setItem}
-        />
         <Menu
           className="navbar-menu"
           setSelectedRoute={setSelectedRoute}

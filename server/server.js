@@ -93,9 +93,12 @@ app.get("/item/searchItem", async (req, res) => {
   try {
     const keyword = req.query.keyword; // Retrieve the keyword from the query parameter
     const keywords = keyword.split(" "); // Split the keyword into individual words
+    // const page = parseInt(req.query.page) || 1;
+    // const limit = parseInt(req.query.limit) || 15;
+    // const offset = (page - 1) * limit;
     const searchQuery = `
-      SELECT * 
-      FROM product_info 
+      SELECT *
+      FROM product_info
       WHERE ${keywords
         .map(
           (_, index) =>
@@ -108,7 +111,7 @@ app.get("/item/searchItem", async (req, res) => {
             })`
         )
         .join(" AND ")}ORDER BY name ASC`;
-    const values = keywords.map((word) => `%${word}%`); // Wrap the keyword with % to perform a partial match
+    const values = [...keywords.map((word) => `%${word}%`)]; // Wrap the keyword with % to perform a partial match
     const result = await pool.query(searchQuery, values);
     const products = result.rows;
     res.send(products);

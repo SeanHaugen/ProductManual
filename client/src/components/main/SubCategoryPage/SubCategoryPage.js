@@ -8,7 +8,6 @@ function SubCategoryPage({ products, setItem }) {
         <div className="product-list">
           {products.map((product) => (
             <div className="product-list-items" key={product.item_number}>
-              <h2>{product.category}</h2>
               <NavLink
                 to={`${product.item_number}`}
                 className="column is-mobile product box"

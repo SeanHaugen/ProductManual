@@ -30,8 +30,12 @@ function ItemPage({ searchData, item, productData }) {
                 <h2>{product.item_number}</h2>
                 <p>{product.description}</p>
                 <p>{product.kit_includes}</p>
+                <p>Prop 65:{product.prop65_status}</p>
+
                 <p>Lead time: {product.lead_times} business days</p>
                 <ItemPricingTable item={item} />
+                <p>setupCharge{product.setupchg}</p>
+                <p>G: $16.00</p>
               </div>
               <button>Save to Favs</button>
               <SelfPromo product={product} />

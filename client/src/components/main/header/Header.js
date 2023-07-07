@@ -2,11 +2,21 @@ import React, { useState, useEffect } from "react";
 
 import "./header.css";
 import logo from "../../../data/img/logo1.png";
+import SearchBar from "../searchbar/SearchBar";
 
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faHome } from '@fortawesome/free-solid-svg-icons'
 
-function Header() {
+function Header({
+  searchData,
+  setSearchData,
+  setQuery,
+  query,
+  setItem,
+  products,
+  category,
+  item,
+}) {
   // const element = <FontAwesomeIcon icon={faHome} />
 
   const [scrollPos, setScrollPos] = useState(0);
@@ -41,6 +51,17 @@ function Header() {
           </div>
         </section>
       </header>
+      <SearchBar
+        className="searchbar"
+        setSearchData={setSearchData}
+        searchData={searchData}
+        setItem={setItem}
+        setQuery={setQuery}
+        query={query}
+        products={products}
+        category={category}
+        item={item}
+      />
 
       <div className="breadcrumb" aria-label="breadcrumbs"></div>
       <br className="break" />

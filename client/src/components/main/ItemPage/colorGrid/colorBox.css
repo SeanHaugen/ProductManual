@@ -1,5 +1,5 @@
 .color {
-    display: flex;
-    max-width: 30em;
-    flex-flow: row wrap;
+  display: grid;
+  max-width: 30em;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }

@@ -1,21 +1,26 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import ReactPaginate from "react-paginate";
 
 import Header from "./header/Header";
 import CategoryPage from "./categoryPage/CategoryPage";
 import SubCategoryPage from "./SubCategoryPage/SubCategoryPage";
 import ItemPage from "./ItemPage/ItemPage";
-import SearchPage from "./searchPage/SearchPage";
+import SearchDropdown from "./searchbar/searchDropdown/SearchDropdown";
 import FrontPage from "./frontPage/FrontPage";
+import SearchBar from "./searchbar/SearchBar";
 
 function main({
   setSubCategory,
   products,
   category,
+  item,
   setItem,
   searchData,
-  item,
+  setSearchData,
   productData,
+  query,
+  setQuery,
 }) {
   //  console.log(searchData);
 
@@ -23,8 +28,18 @@ function main({
     <>
       <main className="main-container">
         <header>
-          <Header />
+          <Header
+            setSearchData={setSearchData}
+            searchData={searchData}
+            setItem={setItem}
+            setQuery={setQuery}
+            query={query}
+            products={products}
+            category={category}
+            item={item}
+          />
         </header>
+
         <div className="routes-container">
           <Routes>
             <Route path="/" element={<FrontPage />} />
@@ -43,17 +58,7 @@ function main({
                 <SubCategoryPage products={products} setItem={setItem} />
               }
             />
-            <Route
-              path="/:search-term"
-              element={
-                <SearchPage
-                  searchData={searchData}
-                  category={category}
-                  products={products}
-                  setItem={setItem}
-                />
-              }
-            />
+
             <Route
               path="/search-term/:item_number"
               element={

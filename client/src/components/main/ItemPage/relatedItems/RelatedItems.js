@@ -11,36 +11,39 @@ function RelatedItems({ product, searchData }) {
   // console.log(productKeywordsList);
   // console.log(filteredItems);
 
-  console.log(product);
+  // console.log(product);
 
-  let productKeywordsList = product.keywords.split(" ");
+  // let productKeywordsList = product.keywords.split(" ");
 
-  const calculateSimilarity = (keywords1, keywords2) => {
-    const intersection = new Set(
-      keywords1.filter((keyword) => keywords2.includes(keyword))
-    );
-    const union = new Set([...keywords1, ...keywords2]);
-    return intersection.size / union.size;
-  };
+  // const calculateSimilarity = (keywords1, keywords2) => {
+  //   const intersection = new Set(
+  //     keywords1.filter((keyword) => keywords2.includes(keyword))
+  //   );
+  //   const union = new Set([...keywords1, ...keywords2]);
+  //   return intersection.size / union.size;
+  // };
 
-  const filteredItems = searchData.filter((item) => {
-    const itemKeywordsList = item.keywords.split(" ");
-    const similarity = calculateSimilarity(
-      productKeywordsList,
-      itemKeywordsList
-    );
-    return similarity >= 0.9;
-  });
-  console.log(filteredItems.map((item) => item.name));
+  // const filteredItems = searchData.filter((item) => {
+  //   const itemKeywordsList = item.keywords.split(" ");
+  //   const similarity = calculateSimilarity(
+  //     productKeywordsList,
+  //     itemKeywordsList
+  //   );
+
+  //   return similarity >= 0.8;
+  // });
+  // console.log(filteredItems.map((item) => item.name));
 
   return (
     <div className="related-items-sidebar box">
       <div>
         Related Items:
         <ul>
-          {filteredItems.map((item) => (
+          {" "}
+          related items here
+          {/* {filteredItems.map((item) => (
             <li key={item.item_number}>{item.name}</li>
-          ))}
+          ))} */}
         </ul>
       </div>
     </div>

@@ -19,6 +19,7 @@ function App() {
   const [products, setProducts] = useState([]);
   const [item, setItem] = useState([]);
   const [productData, setProductData] = useState([]);
+  const [query, setQuery] = useState("");
 
   fetchProductsData(setProducts, subCategory);
   fetchItemData(setProductData, item);
@@ -36,6 +37,8 @@ function App() {
           item={item}
           setItem={setItem}
           productData={productData}
+          setQuery={setQuery}
+          query={query}
         />
 
         <Main
@@ -47,6 +50,9 @@ function App() {
           setItem={setItem}
           item={item}
           productData={productData}
+          query={query}
+          setQuery={setQuery}
+          setSearchData={setSearchData}
         />
       </div>
     </Router>
